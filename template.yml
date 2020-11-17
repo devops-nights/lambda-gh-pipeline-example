@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  GitHub Actions demonstration App
+Resources:
+  ApiGatewayApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+    Auth:
+     UsagePlan:
+      CreateUsagePlan: PER_API
+      Description: Usage plan for this API
+      Quota:
+       Limit: 500
+       Period: MONTH
+      Throttle:
+       BurstLimit: 100
+       RateLimit: 50
+  LamdbaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./    
+      Handler: lambda.handler
+      Runtime: python3.8
+      Events:
+        getCounter:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: get
+            RestApiId: !Ref ApiGatewayApi
