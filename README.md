@@ -16,4 +16,5 @@ Every push to master will trigger the pipeline to run.
 ### Issues:
 no simple way to destroy / undeploy
 
-
+### Test:
+https://(lambda-url)/Prod/hello
