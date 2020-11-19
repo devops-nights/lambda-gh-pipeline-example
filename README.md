@@ -1,5 +1,5 @@
 # Github actions demo for lambda
-Quick example on creating a simple lamdba CD pipeline
+Quick example on creating a simple lamdba CD pipeline in AWS
 
 This leverages github actions and sam to do a very simple pipeline.  
 
